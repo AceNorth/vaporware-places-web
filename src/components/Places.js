@@ -17,12 +17,12 @@ export default class Places extends Component {
   };
 
   render() {
-    const { name } = this.state;
+    const { name, address } = this.state;
 
     return (
       <div className="container">
         <div className="row">
-          <PlacesList handleChange={this.handleChange} />
+          <PlacesList handleChange={this.handleChange} name={name} address={address}  />
           <PlacesMap />
         </div>
       </div>
