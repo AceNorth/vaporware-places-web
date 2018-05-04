@@ -9,6 +9,25 @@ export default class Places extends Component {
     this.state = {
       name: '',
       address: '',
+      startingLocation: {
+        lat: '',
+        lng: '',
+      },
+    };
+  };
+
+  componentDidMount() {
+    this.props.getPlaces();
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        console.log(pos)
+        this.setState({
+          startingLocation: {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+          }
+        });
+      });
     };
   };
 
@@ -32,10 +51,6 @@ export default class Places extends Component {
       name: '',
       address: '',
     });
-  }
-
-  componentDidMount() {
-    this.props.getPlaces();
   }
 
   render() {
