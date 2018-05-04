@@ -30,7 +30,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         isLoading: false,
-        places: [...state.places, action.data],
+        places: state.places.push(action.data),
       };
     default:
       return state;
@@ -55,21 +55,21 @@ function getPlacesRequest() {
 function getPlacesSuccess() {
   const places = [
     {
-      id: 1,
+      id: Math.random(),
       name: "Demo's Pizza",
       address: "222 Glenwood Ave. #121, Raleigh, NC 27603",
       lat: "35.783625",
       lng: "-78.647145",
     },
     {
-      id: 2,
+      id: Math.random(),
       name: "Second Empire",
       address: "330 Hillsborough St., Raleigh, NC 27603",
       lat: "35.780962",
       lng: "-78.644705",
     },
     {
-      id: 3,
+      id: Math.random(),
       name: "Angus Barn",
       address: "9401 Glenwood Ave. Raleigh, NC 27617",
       lat: "35.899187",

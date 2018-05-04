@@ -7,8 +7,6 @@ export default class Places extends Component {
     super(props);
 
     this.state = {
-      name: '',
-      address: '',
       startingLocation: {
         lat: '',
         lng: '',
@@ -31,26 +29,13 @@ export default class Places extends Component {
     };
   };
 
-  handleChange = e => {
-    this.setState({[e.target.name]: e.target.value});
-  };
-
-  handleAddressChange = address => {
-    this.setState({address: address});
-  };
-
-  handleSubmitPlace = () => {
-    let place = {
-      name: this.state.name,
-      address: this.state.address,
-      id: Math.floor(Math.random() * Math.floor(1000)),
+  handleSubmitPlace = (place) => {
+    let params = {
+      ...place,
+      id: Math.random(),
     };
 
-    this.props.createPlace(place);
-    this.setState({
-      name: '',
-      address: '',
-    });
+    this.props.createPlace(params);
   }
 
   render() {
@@ -61,12 +46,8 @@ export default class Places extends Component {
       <div className='container'>
         <div className='row'>
           <PlacesList
-            handleChange={this.handleChange}
-            handleAddressChange={this.handleAddressChange}
             submitPlace={this.handleSubmitPlace}
-            places={places}
-            name={name}
-            address={address}  />
+            places={places}/>
           <PlacesMap />
         </div>
       </div>
