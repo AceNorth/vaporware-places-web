@@ -9,6 +9,7 @@ export default class Places extends Component {
     this.state = {
       name: '',
       address: '',
+      modalOpen: true,
     };
   };
 
@@ -16,13 +17,21 @@ export default class Places extends Component {
     this.setState({[e.target.name]: e.target.value});
   };
 
+  handleAddressChange = address => {
+    this.setState({address: address});
+  };
+
   render() {
-    const { name, address } = this.state;
+    const { name, address, modalOpen } = this.state;
 
     return (
-      <div className="container">
-        <div className="row">
-          <PlacesList handleChange={this.handleChange} name={name} address={address}  />
+      <div className='container'>
+        <div className='row'>
+          <PlacesList
+            handleChange={this.handleChange} 
+            handleAddressChange={this.handleAddressChange}
+            name={name}
+            address={address}  />
           <PlacesMap />
         </div>
       </div>

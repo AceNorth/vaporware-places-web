@@ -22,6 +22,7 @@ export default function reducer(state = initialState, action = {}) {
       };
     default:
       return state;
+      // eslint-disable-next-line
   };
 };
 
