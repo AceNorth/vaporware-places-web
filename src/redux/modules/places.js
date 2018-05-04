@@ -54,7 +54,27 @@ function getPlacesRequest() {
 
 function getPlacesSuccess() {
   const places = [
-    {id: 1, name: "DeMo's Pizza", address: ""},
+    {
+      id: 1,
+      name: "Demo's Pizza",
+      address: "222 Glenwood Ave. #121, Raleigh, NC 27603",
+      lat: "35.783625",
+      lng: "-78.647145",
+    },
+    {
+      id: 2,
+      name: "Second Empire",
+      address: "330 Hillsborough St., Raleigh, NC 27603",
+      lat: "35.780962",
+      lng: "-78.644705",
+    },
+    {
+      id: 3,
+      name: "Angus Barn",
+      address: "9401 Glenwood Ave. Raleigh, NC 27617",
+      lat: "35.899187",
+      lng: "-78.763583",
+    },
   ]
   return {
     type: GET_PLACES_SUCCESS,
@@ -62,11 +82,11 @@ function getPlacesSuccess() {
   };
 };
 
-export function createPlace() {
+export function createPlace(place) {
   return dispatch => {
     dispatch(createPlaceRequest());
 
-    return dispatch(createPlaceSuccess());
+    return dispatch(createPlaceSuccess(place));
   };
 };
 
@@ -76,12 +96,7 @@ function createPlaceRequest() {
   };
 };
 
-function createPlaceSuccess() {
-  const place = {
-    name: "Armadillo Grill",
-    address: "439 Glenwood Ave, Raleigh, NC 27603",
-  };
-
+function createPlaceSuccess(place) {
   return {
     type: CREATE_PLACE_SUCCESS,
     data: place,

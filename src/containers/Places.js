@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as placesActions from '../redux/modules/places';
+import { getPlaces, createPlace } from '../redux/modules/places';
 import Places from '../components/Places';
 
 const mapStateToProps = state => {
@@ -13,8 +13,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    ...bindActionCreators,
-    placesActions,
+    ...bindActionCreators({
+      getPlaces,
+      createPlace,
+    }, dispatch)
   };
 };
 

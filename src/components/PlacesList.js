@@ -1,7 +1,14 @@
 import React from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 
-export default({ handleChange, handleAddressChange, name, address }) =>
+export default({
+  handleChange,
+  handleAddressChange,
+  name,
+  address,
+  places,
+  submitPlace,
+}) =>
   <div className="col-md-3">
     <h2>Places List</h2>
     <input
@@ -37,4 +44,19 @@ export default({ handleChange, handleAddressChange, name, address }) =>
         </div>
       )}
     </PlacesAutocomplete>
+    <button
+      className="btn btn-primary"
+      style={{marginTop: "10px"}}
+      onClick={submitPlace}>
+      Add new
+    </button>
+    <hr />
+    <div className="list-group">
+      {places.map(place => (
+        <div className="list-group-item" key={place.id}>
+          <strong style={{fontSize: '16px'}}>{place.name}</strong>
+          <p>{place.address}</p>
+        </div>
+      ))}
+    </div>
   </div>
